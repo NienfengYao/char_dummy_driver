@@ -19,7 +19,7 @@ check: all
 
 install_driver: $(DRIVER_BIN)
 	sudo insmod $(DRIVER_NAME).ko
-	sudo mknod /dev/$(DRIVER_NAME) c 240 0
+	sudo mknod /dev/$(DRIVER_NAME) c 255 0
 
 uninstall_driver:
 	sudo rmmod $(DRIVER_NAME)

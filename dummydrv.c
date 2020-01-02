@@ -1,3 +1,5 @@
+#include <linux/sched.h>
+#include <linux/uaccess.h>
 #include <linux/module.h>
 #include <linux/init.h>
 #include <linux/fs.h>
@@ -9,7 +11,7 @@
 #define BUF_LEN 2981 	/* Max length of the message from the device */
 
 
-static int major_num = 240; /* major_num number assigned to our device driver */
+static int major_num = 255; /* major_num number assigned to our device driver */
 static int dev_open_count = 0; /* Is device open? Used to prevent multiple */
 
 static char msg[BUF_LEN]; /* The msg the device will give when asked */
@@ -20,14 +22,14 @@ static int device_open(struct inode *inode, struct file *file)
 		return -EBUSY;
 	
 	dev_open_count++;
-	printk("<1>device_open call\n");
+	printk("%s() call\n", __func__);
 	return SUCCESS;
 }
 
 static int device_release(struct inode *inode, struct file *file)
 {
 	dev_open_count--; /* We're now ready for our next caller */
-	printk("<1>device_release call\n");
+	printk("%s() call\n", __func__);
 	return 0;
 }
 
