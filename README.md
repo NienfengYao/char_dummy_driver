@@ -12,3 +12,10 @@ sudo apt-get install linux-headers-generic
 ```shell
 $ make check
 ```
+
+* Generate binary file for test
+```shell
+$ dd if=/dev/zero of=test.bin bs=65K count=1
+
+```
+

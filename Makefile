@@ -23,3 +23,4 @@ install_driver: $(DRIVER_BIN)
 
 uninstall_driver:
 	sudo rmmod $(DRIVER_NAME)
+	sudo rm /dev/$(DRIVER_NAME)
